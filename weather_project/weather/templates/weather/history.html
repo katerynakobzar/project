@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search History</title>
+</head>
+<body>
+    <h1>Search History</h1>
+    <ul>
+        {% for search in searches %}
+            <li>{{ search.city }} - {{ search.temperature }}°C - {{ search.description }} ({{ search.search_date }})</li>
+        {% empty %}
+            <li>No search history</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'main' %}">Back to main</a></p>
+</body>
+</html>
