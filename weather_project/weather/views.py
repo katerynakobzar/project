@@ -6,6 +6,7 @@ import requests
 from .models import SearchHistory
 from django.contrib import messages
 from django.urls import reverse
+from decouple import config
 
 def register(request):
     if request.method == 'POST':
@@ -37,7 +38,7 @@ def main(request):
     weather = None
     if request.method == 'POST':
         city = request.POST.get('city')
-        api_key = '8108f3c92cfdb71b49746479496e69c4'  # Замініть на ваш API ключ
+        api_key = config('API_KEY')
         url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric'
         response = requests.get(url)
         data = response.json()
